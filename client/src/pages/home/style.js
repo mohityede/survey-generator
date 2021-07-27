@@ -8,7 +8,7 @@ export default makeStyles((theme) => ({
         paddingTop: '20px',
         flexWrap: 'wrap',
         [theme.breakpoints.down('xs')]: {
-            flexDirection: 'column-reverse',
+            flexDirection: 'column',
             alignItems: 'center',
         },
     },

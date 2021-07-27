@@ -1,18 +1,22 @@
 import React from 'react';
+import axios from 'axios';
 import { toast } from 'react-toastify';
-import { Container, Typography, MenuItem, TextField, Button, Select, InputLabel } from '@material-ui/core';
+import { useParams, useHistory } from "react-router-dom";
+import { Container, Typography, Fab, MenuItem, TextField, Button, Select, InputLabel } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 import SaveIcon from '@material-ui/icons/Save';
 import CancelIcon from '@material-ui/icons/Cancel';
-import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import useStyles from './style';
 
 function QuestionDetails() {
     const classes = useStyles();
+    const history = useHistory();
     const [question, setQues] = React.useState('');
-    const [required, setRequired] = React.useState('');
+    const [isRequired, setRequired] = React.useState('');
     const [type, setType] = React.useState('');
     const [options, setOptions] = React.useState([{ value: null }]);
+    //@ts-ignore
+    const { id: surveyId } = useParams();
 
     function handleChange(i, event) {
         const values = [...options];
@@ -32,28 +36,41 @@ function QuestionDetails() {
         setOptions(values);
     }
 
+    function clearState() {
+        setQues('');
+        setRequired('');
+        setType('');
+        setOptions([{ value: null }]);
+    }
+
     function handleSubmit(e) {
         e.preventDefault();
-        if (question !== '' && required !== '' && type !== '') {
-            const output = {
+        const flag = (question !== '' && isRequired !== '' && type !== '')
+        if (flag) {
+            const ques = {
                 question,
-                required,
+                isRequired,
                 type,
                 options
             }
-            console.log(output);
-            setQues('');
-            setRequired('');
-            setType('');
-            toast.success("Question succefully added..")
+            try {
+                const putSurvey = async () => {
+                    const result = await axios.put(`http://localhost:7700/api/${surveyId}/question`, ques);
+                }
+                putSurvey();
+                clearState();
+                toast.success("Question succefully added..")
+            } catch (err) {
+                toast.error("Something wrong!!")
+            }
         } else {
             toast.error("Please fill all required field!!")
         }
     }
 
     function handleSave() {
-        console.log('submitted')
-
+        history.replace('/');
+        toast.success("Survey created succefully..")
     }
 
     function handleques(event) {
@@ -87,7 +104,7 @@ function QuestionDetails() {
                         <InputLabel id="demo-simple-select-label">Required</InputLabel>
                         <Select
                             labelId="demo-simple-select-label"
-                            value={required}
+                            value={isRequired}
                             fullWidth
                             onChange={handleRequired}
                         >
@@ -144,7 +161,9 @@ function QuestionDetails() {
 
                     <Container className={classes.input}>
                         <Button type="submit" color="primary" aria-label="add">
-                            <AddCircleOutlineIcon />
+                            <Fab color="primary" aria-label="add">
+                                <AddIcon />
+                            </Fab>
                         </Button>
                     </Container>
 
@@ -157,6 +176,7 @@ function QuestionDetails() {
                             startIcon={<SaveIcon />}
                             type='submit'
                             onClick={handleSave}
+                            disabled={(question == '' && isRequired == '' && type == '')}
                         >
                             Save Survey
                                 </Button>

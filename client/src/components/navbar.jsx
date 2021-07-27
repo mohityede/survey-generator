@@ -7,7 +7,7 @@ export default function Navbar() {
     const classes = useStyles();
 
     return (
-        <div className={classes.root}>
+        <div className={classes.navRoot}>
             <AppBar position="static">
                 <Toolbar>
                     <NavLink to='/' >

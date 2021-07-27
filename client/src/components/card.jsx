@@ -1,24 +1,25 @@
 import React from 'react';
+import { format } from 'timeago.js';
 import { Card, CardContent, Typography } from '@material-ui/core';
 import useStyles from './style';
 
-export default function SimpleCard() {
+export default function SimpleCard({ survey }) {
     const classes = useStyles();
 
     return (
-        <Card className={classes.root}>
+        <Card className={classes.cardRoot}>
             <CardContent>
                 <Typography className={classes.titleP} color="textSecondary" gutterBottom>
-                    day before
+                    {format(survey.updatedAt)}
                 </Typography>
                 <Typography variant="h5" component="h2">
-                    Title
+                    {survey.title}
                 </Typography>
                 <Typography className={classes.pos} color="textSecondary">
-                    subTitle
+                    {survey.subTitle}
                 </Typography>
                 <Typography variant="body2" component="p">
-                    description
+                    {survey.description}
                 </Typography>
             </CardContent>
         </Card>

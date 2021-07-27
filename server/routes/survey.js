@@ -30,7 +30,7 @@ router.put('/:id/question', async (req, res) => {
 // get all surveys
 router.get('/survey/all', async (req, res) => {
     try {
-        const surveys = await Survey.find();
+        const surveys = await Survey.find().sort({ 'updatedAt': -1 });
         res.status(200).json(surveys);
     } catch (err) {
         res.status(500).json(err);

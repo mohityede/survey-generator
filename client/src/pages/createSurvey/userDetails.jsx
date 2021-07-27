@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { Container, Typography, Fab, TextField, Button } from '@material-ui/core';
@@ -11,7 +12,7 @@ function UserDetails() {
     const [creatorName, setName] = React.useState('');
     const [email, setEmail] = React.useState('');
     const [title, setTitle] = React.useState('');
-    const [subitle, setSubtitle] = React.useState('');
+    const [subTitle, setSubtitle] = React.useState('');
     const [description, setDescription] = React.useState('');
 
     function handleName(event) {
@@ -38,15 +39,22 @@ function UserDetails() {
         e.preventDefault();
         const flag = (creatorName != '' && email != '' && title != '');
         if (flag) {
-            const output = {
+            const survey = {
                 creatorName,
                 email,
                 title,
-                subitle,
+                subTitle,
                 description
             }
-            console.log(output);
-            history.replace('/create/:id/quetions')
+            try {
+                const postSurvey = async () => {
+                    const result = await axios.post("http://localhost:7700/api/create/survey", survey);
+                    history.replace(`/${result.data._id}/quetion`)
+                }
+                postSurvey();
+            } catch (err) {
+                toast.error("Something wrong!!")
+            }
         } else {
             toast.error("Please fill all required field!!")
         }
@@ -73,7 +81,7 @@ function UserDetails() {
                         <TextField onChange={handleTitle} value={title} required fullWidth label="Survey Title" />
                     </Container>
                     <Container className={classes.input}>
-                        <TextField onChange={handleSubTitle} value={subitle} fullWidth label="Survey Subtitle" />
+                        <TextField onChange={handleSubTitle} value={subTitle} fullWidth label="Survey Subtitle" />
                     </Container>
                     <Container className={classes.input}>
                         <TextField onChange={handleDescription} value={description} fullWidth label="Survey Description" />

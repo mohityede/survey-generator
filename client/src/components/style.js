@@ -1,10 +1,12 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles((theme) => ({
-    root: {
+    navRoot: {
         flexGrow: 1,
-        minWidth: 275,
-        maxHeight: 250,
+    },
+    cardRoot: {
+        width: "300px",
+        height: "170px",
         margin: '10px',
     },
     menuButton: {

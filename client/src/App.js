@@ -13,7 +13,7 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Switch>
-          <Route path="/create/:id/quetions" component={QuestionDetails} />
+          <Route path="/:id/quetion" component={QuestionDetails} />
           <Route path="/create/userDetails" component={UserDetails} />
           <Route path="/not-found" component={PageNotFound} />
           <Route path="/" exact component={Home} />
