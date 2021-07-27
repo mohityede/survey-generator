@@ -25,7 +25,7 @@ app.use(express.json());
 app.use(morgan("common"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use("/api/survey", surveyRoute);
+app.use("/api", surveyRoute);
 
 const PORT = 7700;
 
