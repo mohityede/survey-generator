@@ -46,15 +46,16 @@ function UserDetails() {
                 subTitle,
                 description
             }
-            try {
-                const postSurvey = async () => {
+            const postSurvey = async () => {
+                try {
                     const result = await axios.post("http://localhost:7700/api/create/survey", survey);
                     history.replace(`/${result.data._id}/quetion`)
+                } catch (err) {
+                    toast.error("Something wrong with connection!!")
                 }
-                postSurvey();
-            } catch (err) {
-                toast.error("Something wrong!!")
             }
+            postSurvey();
+
         } else {
             toast.error("Please fill all required field!!")
         }
@@ -70,7 +71,7 @@ function UserDetails() {
                     * are compulsory
                   </Typography>
 
-                <form className={classes.formContainer} onSubmit={handleSubmit} noValidate autoComplete="off">
+                <form className={classes.formContainer} onSubmit={handleSubmit} validate autoComplete="off">
                     <Container className={classes.input}>
                         <TextField onChange={handleName} value={creatorName} required fullWidth label="Your Name" />
                     </Container>

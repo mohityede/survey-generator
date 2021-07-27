@@ -8,15 +8,32 @@ export default makeStyles((theme) => ({
         width: "300px",
         height: "170px",
         margin: '10px',
+        backgroundSize: '200%',
+        background: '#ebf5fc',
+        boxShadow: 'inset 5px 5px 5px rgba(0,0,0,0.5), inset -5px -5px 5px rgba(255,255,255,0.5),5px 5px 5px rgba(0,0,0,0.5), -5px -5px 5px rgba(255,255,255,0.5)',
+        transition: '0.6s',
+        // backgroundImage: 'linear-gradient(45deg, #FFC312, #EE5A24, #00a8ff)',
+        '&:hover': {
+            transform: 'translateY(-5px)',
+            boxShdow: '0 5px 20px rgba(0,0,0,0.4)',
+            background: 'linear-gradient(45deg,white,#3f51b5)',
+            cursor: 'pointer',
+        }
+    },
+    quesRoot: {
+        marginTop: '30px'
     },
     menuButton: {
         marginRight: theme.spacing(2),
-        marginLeft: '30px'
+        marginLeft: '60px'
     },
     title: {
         flexGrow: 1,
         color: 'white',
         textDecorationLine: 'none',
+        [theme.breakpoints.down('xs')]: {
+            fontSize: '15px'
+        }
     },
     titleP: {
         fontSize: 14,

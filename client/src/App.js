@@ -4,6 +4,7 @@ import Navbar from './components/navbar';
 import Home from './pages/home/home';
 import UserDetails from './pages/createSurvey/userDetails';
 import QuestionDetails from './pages/createSurvey/questionDetails';
+import ShowSurvey from './pages/showSurvey/showSurvey';
 import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Route path="/create/userDetails" component={UserDetails} />
           <Route path="/not-found" component={PageNotFound} />
           <Route path="/" exact component={Home} />
+          <Route path="/:id/survey" component={ShowSurvey} />
           <Redirect to="/not-found" />
         </Switch>
       </BrowserRouter>

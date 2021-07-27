@@ -43,8 +43,7 @@ function QuestionDetails() {
         setOptions([{ value: null }]);
     }
 
-    function handleSubmit(e) {
-        e.preventDefault();
+    function doSubmit() {
         const flag = (question !== '' && isRequired !== '' && type !== '')
         if (flag) {
             const ques = {
@@ -61,16 +60,21 @@ function QuestionDetails() {
                 clearState();
                 toast.success("Question succefully added..")
             } catch (err) {
-                toast.error("Something wrong!!")
+                toast.error("Something wrong with connection!!")
             }
         } else {
             toast.error("Please fill all required field!!")
         }
     }
 
+    function handleSubmit(e) {
+        e.preventDefault();
+        doSubmit();
+    }
+
     function handleSave() {
+        doSubmit();
         history.replace('/');
-        toast.success("Survey created succefully..")
     }
 
     function handleques(event) {
@@ -91,11 +95,11 @@ function QuestionDetails() {
                 <Typography variant="h4" className={classes.title}>
                     Create Survey
                   </Typography>
-                <Typography className={classes.title}>
+                <Typography>
                     * are compulsory
                   </Typography>
 
-                <form className={classes.formContainer} onSubmit={handleSubmit} noValidate autoComplete="off">
+                <form className={classes.formContainer} onSubmit={handleSubmit} validate autoComplete="off">
                     <Container className={classes.input}>
                         <TextField onChange={handleques} value={question} required fullWidth label="Question" />
                     </Container>
@@ -174,9 +178,8 @@ function QuestionDetails() {
                             size="small"
                             className={classes.button}
                             startIcon={<SaveIcon />}
-                            type='submit'
                             onClick={handleSave}
-                            disabled={(question == '' && isRequired == '' && type == '')}
+                            disabled={(question === '' || isRequired === '' || type === '')}
                         >
                             Save Survey
                                 </Button>

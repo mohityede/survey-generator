@@ -1,13 +1,18 @@
 import React from 'react';
 import { format } from 'timeago.js';
-import { Card, CardContent, Typography } from '@material-ui/core';
+import { Card, CardContent, Typography, ButtonBase, Container } from '@material-ui/core';
 import useStyles from './style';
+import { useHistory } from 'react-router-dom';
 
 export default function SimpleCard({ survey }) {
     const classes = useStyles();
+    const history = useHistory();
+    const openSurvey = (e) => {
+        history.push(`/${survey._id}/survey`);
+    };
 
     return (
-        <Card className={classes.cardRoot}>
+        <Card className={classes.cardRoot} onClick={openSurvey}>
             <CardContent>
                 <Typography className={classes.titleP} color="textSecondary" gutterBottom>
                     {format(survey.updatedAt)}
@@ -19,7 +24,10 @@ export default function SimpleCard({ survey }) {
                     {survey.subTitle}
                 </Typography>
                 <Typography variant="body2" component="p">
-                    {survey.description}
+                    Created By: {survey.creatorName}
+                </Typography>
+                <Typography variant="body2" component="p">
+                    Creator email: {survey.email}
                 </Typography>
             </CardContent>
         </Card>

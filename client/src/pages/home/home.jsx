@@ -1,32 +1,33 @@
 import axios from 'axios';
 import { Container, Typography } from '@material-ui/core';
 import { useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
 import SimpleCard from '../../components/card';
 import useStyles from './style';
-import { toast } from 'react-toastify';
 
 function Home() {
     const classes = useStyles();
     const [surveys, setSurveys] = useState([]);
 
     useEffect(() => {
-        try {
-            const fetchSurveys = async () => {
+
+        const fetchSurveys = async () => {
+            try {
                 const result = await axios.get("http://localhost:7700/api/survey/all");
                 setSurveys(result.data);
-                console.log(result.data);
+            } catch (err) {
+                toast.error("Something wrong with connection!!")
             }
-            fetchSurveys();
-        } catch (err) {
-            toast.error("Something wrong!!")
         }
+        fetchSurveys();
+
     }, [])
 
     return (
         <>
             <Typography className={classes.heading} >Existing Surveys</Typography>
             <Container className={classes.Container}>
-                {surveys.map(survey => (
+                {surveys && surveys.map(survey => (
                     //@ts-ignore
                     < SimpleCard key={survey._id} survey={survey} />
                 ))}
