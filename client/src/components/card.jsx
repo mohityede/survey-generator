@@ -1,6 +1,6 @@
 import React from 'react';
 import { format } from 'timeago.js';
-import { Card, CardContent, Typography, ButtonBase, Container } from '@material-ui/core';
+import { Card, CardContent, Typography } from '@material-ui/core';
 import useStyles from './style';
 import { useHistory } from 'react-router-dom';
 

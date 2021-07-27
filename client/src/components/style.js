@@ -12,7 +12,6 @@ export default makeStyles((theme) => ({
         background: '#ebf5fc',
         boxShadow: 'inset 5px 5px 5px rgba(0,0,0,0.5), inset -5px -5px 5px rgba(255,255,255,0.5),5px 5px 5px rgba(0,0,0,0.5), -5px -5px 5px rgba(255,255,255,0.5)',
         transition: '0.6s',
-        // backgroundImage: 'linear-gradient(45deg, #FFC312, #EE5A24, #00a8ff)',
         '&:hover': {
             transform: 'translateY(-5px)',
             boxShdow: '0 5px 20px rgba(0,0,0,0.4)',
@@ -32,7 +31,7 @@ export default makeStyles((theme) => ({
         color: 'white',
         textDecorationLine: 'none',
         [theme.breakpoints.down('xs')]: {
-            fontSize: '15px'
+            fontSize: '13px'
         }
     },
     titleP: {

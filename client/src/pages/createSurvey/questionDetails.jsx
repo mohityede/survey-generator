@@ -43,6 +43,16 @@ function QuestionDetails() {
         setOptions([{ value: null }]);
     }
 
+    function validateOptions() {
+        if (type === 'selectOne' || type === 'selectMultiple') {
+            if (options.length === 0) {
+                toast.error("Atleast one option is required!!")
+                return false;
+            }
+        }
+        return true;
+    }
+
     function doSubmit() {
         const flag = (question !== '' && isRequired !== '' && type !== '')
         if (flag) {
@@ -54,7 +64,7 @@ function QuestionDetails() {
             }
             try {
                 const putSurvey = async () => {
-                    const result = await axios.put(`http://localhost:7700/api/${surveyId}/question`, ques);
+                    await axios.put(`http://localhost:7700/api/${surveyId}/question`, ques);
                 }
                 putSurvey();
                 clearState();
@@ -69,12 +79,14 @@ function QuestionDetails() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        doSubmit();
+        validateOptions() && doSubmit();
     }
 
     function handleSave() {
-        doSubmit();
-        history.replace('/');
+        if (validateOptions()) {
+            doSubmit();
+            history.replace('/');
+        }
     }
 
     function handleques(event) {
@@ -133,7 +145,7 @@ function QuestionDetails() {
                         </Select>
                     </Container>
 
-                    {(type == "selectOne" || type == "selectMultiple") && <Container className={classes.input}>
+                    {(type === "selectOne" || type === "selectMultiple") && <Container className={classes.input}>
                         <Button
                             variant="contained"
                             color="primary"

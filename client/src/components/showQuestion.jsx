@@ -1,6 +1,5 @@
 import React from 'react';
-import { FormLabel, FormGroup, Checkbox, Radio, TextField, AppBar, Toolbar, Container, Typography, Button, RadioGroup, FormControlLabel } from '@material-ui/core';
-import { NavLink } from 'react-router-dom';
+import { FormGroup, Checkbox, Radio, TextField, Container, RadioGroup, FormControlLabel } from '@material-ui/core';
 import useStyles from './style';
 
 export default function ShowQuestion({ ques }) {
@@ -11,10 +10,10 @@ export default function ShowQuestion({ ques }) {
             <Container style={{ marginBottom: '20px' }}>
                 Q. {ques.question}{ques.isRequired && '*'}
             </Container>
-            {(ques.type == 'text') && <Container>
+            {(ques.type === 'text') && <Container>
                 <TextField id="outlined-basic" label="Outlined" variant="outlined" />
             </Container>}
-            {(ques.type == 'selectMultiple') && <Container>
+            {(ques.type === 'selectMultiple') && <Container>
 
                 <FormGroup>
                     {/* {ques.options.length} */}
@@ -28,7 +27,7 @@ export default function ShowQuestion({ ques }) {
 
                 </FormGroup>
             </Container>}
-            {(ques.type == 'selectOne') && <Container>
+            {(ques.type === 'selectOne') && <Container>
                 <RadioGroup aria-label="gender" name="gender1" >
                     {ques.options.map(opt => (
                         <FormControlLabel value={opt.value} control={<Radio />} label={opt.value} />

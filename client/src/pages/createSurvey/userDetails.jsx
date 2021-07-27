@@ -37,7 +37,7 @@ function UserDetails() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        const flag = (creatorName != '' && email != '' && title != '');
+        const flag = (creatorName !== '' && email !== '' && title !== '');
         if (flag) {
             const survey = {
                 creatorName,
