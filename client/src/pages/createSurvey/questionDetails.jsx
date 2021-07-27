@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { useParams, useHistory } from "react-router-dom";
-import { Container, Typography, Fab, MenuItem, TextField, Button, Select, InputLabel } from '@material-ui/core';
+import { Container, Typography, MenuItem, TextField, Button, Select, InputLabel } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 import SaveIcon from '@material-ui/icons/Save';
 import CancelIcon from '@material-ui/icons/Cancel';
@@ -85,6 +85,7 @@ function QuestionDetails() {
     function handleSave() {
         if (validateOptions()) {
             doSubmit();
+            toast.success("Survey Created..")
             history.replace('/');
         }
     }
@@ -117,7 +118,7 @@ function QuestionDetails() {
                     </Container>
 
                     <Container className={classes.input}>
-                        <InputLabel id="demo-simple-select-label">Required</InputLabel>
+                        <InputLabel id="demo-simple-select-label">is it Compulsory</InputLabel>
                         <Select
                             labelId="demo-simple-select-label"
                             value={isRequired}
@@ -153,6 +154,7 @@ function QuestionDetails() {
                             onClick={() => handleAdd()}
                             className={classes.button}
                             startIcon={<AddIcon />}
+                            disabled={options.length > 8}
                         >
                             Add Option
                                 </Button>
@@ -160,9 +162,8 @@ function QuestionDetails() {
                         {options.map((field, idx) => {
                             return (
                                 <Container key={`${field}-${idx}`}>
-                                    <TextField onChange={e => handleChange(idx, e)} required label={`option ${idx}`} className={classes.input} />
+                                    <TextField onChange={e => handleChange(idx, e)} required className={classes.input} label={`option ${idx}`} />
                                     <Button
-                                        variant="contained"
                                         color="secondary"
                                         size="small"
                                         onClick={() => handleRemove(idx)}
@@ -177,9 +178,9 @@ function QuestionDetails() {
 
                     <Container className={classes.input}>
                         <Button type="submit" color="primary" aria-label="add">
-                            <Fab color="primary" aria-label="add">
-                                <AddIcon />
-                            </Fab>
+                            <Button color="primary">
+                                <AddIcon /> Add Quiz
+                            </Button>
                         </Button>
                     </Container>
 

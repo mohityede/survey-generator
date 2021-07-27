@@ -65,7 +65,7 @@ function ShowSurvey() {
                         sorry! you can't submit
                                 </Button>
                 </form>
-                <Typography>if you want to submit survey.. first approve my work</Typography>
+                <Typography>if you want to submit survey.. you need to approve my work</Typography>
             </Container>
         </>
     );

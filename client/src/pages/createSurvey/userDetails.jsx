@@ -76,7 +76,7 @@ function UserDetails() {
                         <TextField onChange={handleName} value={creatorName} required fullWidth label="Your Name" />
                     </Container>
                     <Container className={classes.input}>
-                        <TextField onChange={handleEmail} value={email} required fullWidth label="Email" />
+                        <TextField onChange={handleEmail} type='email' value={email} required fullWidth label="Email" />
                     </Container>
                     <Container className={classes.input}>
                         <TextField onChange={handleTitle} value={title} required fullWidth label="Survey Title" />

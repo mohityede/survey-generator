@@ -12,7 +12,7 @@ export default function Navbar() {
                 <Toolbar>
                     <NavLink to='/' >
                         <Typography variant="h6" className={classes.title}>
-                            Survey Genrator
+                            Home
                     </Typography>
                     </NavLink>
                     <NavLink to='/create/userDetails' >

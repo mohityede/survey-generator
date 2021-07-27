@@ -15,9 +15,12 @@ export default makeStyles((theme) => ({
         '&:hover': {
             transform: 'translateY(-5px)',
             boxShdow: '0 5px 20px rgba(0,0,0,0.4)',
-            background: 'linear-gradient(45deg,white,#3f51b5)',
+            background: 'linear-gradient(90deg,white,#3f51b5)',
             cursor: 'pointer',
         }
+    },
+    cardTitle: {
+        color: 'rgb(63, 81, 181)'
     },
     quesRoot: {
         marginTop: '30px'
@@ -30,9 +33,6 @@ export default makeStyles((theme) => ({
         flexGrow: 1,
         color: 'white',
         textDecorationLine: 'none',
-        [theme.breakpoints.down('xs')]: {
-            fontSize: '13px'
-        }
     },
     titleP: {
         fontSize: 14,

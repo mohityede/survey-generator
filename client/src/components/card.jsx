@@ -17,7 +17,7 @@ export default function SimpleCard({ survey }) {
                 <Typography className={classes.titleP} color="textSecondary" gutterBottom>
                     {format(survey.updatedAt)}
                 </Typography>
-                <Typography variant="h5" component="h2">
+                <Typography variant="h5" className={classes.cardTitle} component="h2">
                     {survey.title}
                 </Typography>
                 <Typography className={classes.pos} color="textSecondary">
@@ -26,8 +26,8 @@ export default function SimpleCard({ survey }) {
                 <Typography variant="body2" component="p">
                     Created By: {survey.creatorName}
                 </Typography>
-                <Typography variant="body2" component="p">
-                    Creator email: {survey.email}
+                <Typography className={classes.pos} color="textSecondary">
+                    {survey.questions.length} Questions
                 </Typography>
             </CardContent>
         </Card>
