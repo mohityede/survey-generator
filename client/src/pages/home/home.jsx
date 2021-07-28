@@ -27,6 +27,7 @@ function Home() {
         <>
             <Typography className={classes.heading} >Existing Surveys</Typography>
             <Container className={classes.Container}>
+                {(surveys.length === 0) && <Container className={classes.notice} >Nothing to Display! Create some survey.</Container>}
                 {surveys && surveys.map(survey => (
                     //@ts-ignore
                     < SimpleCard key={survey._id} survey={survey} />

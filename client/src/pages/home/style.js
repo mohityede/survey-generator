@@ -17,5 +17,10 @@ export default makeStyles((theme) => ({
         fontSize: '30px',
         marginTop: '20px',
         fontWeight: 'bold'
+    },
+    notice: {
+        color: 'gray',
+        textAlign: 'center',
+        fontSize: '30px'
     }
 }));
