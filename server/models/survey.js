@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
-import QuestionSchema from "./question";
 
+const { Schema } = mongoose;
 const reqString = {
     type: String,
     required: true
@@ -17,7 +17,7 @@ const SurveySchema = new mongoose.Schema(
         description: {
             type: String,
         },
-        questions: [QuestionSchema],
+        questions: [{ type: Schema.Types.ObjectId, ref: 'Question' }],
         users: [reqString]
     },
     { timestamps: true }
