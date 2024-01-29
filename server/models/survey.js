@@ -1,24 +1,10 @@
 import mongoose from "mongoose";
+import QuestionSchema from "./question";
 
 const reqString = {
     type: String,
     required: true
 }
-
-const QuestionSchema = new mongoose.Schema(
-    {
-        question: reqString,
-        isRequired: {
-            type: Boolean,
-            required: true
-        },
-        type: reqString,
-        options: {
-            type: Array,
-            default: [{ value: null }],
-        }
-    }
-)
 
 const SurveySchema = new mongoose.Schema(
     {
@@ -31,7 +17,8 @@ const SurveySchema = new mongoose.Schema(
         description: {
             type: String,
         },
-        questions: [QuestionSchema]
+        questions: [QuestionSchema],
+        users: [reqString]
     },
     { timestamps: true }
 );
