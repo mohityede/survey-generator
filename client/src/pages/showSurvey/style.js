@@ -9,11 +9,24 @@ export default makeStyles((theme) => ({
         alignItems: 'center',
         fontSize: '20px'
     },
-    formContainer: {
+    btnContainer: {
         display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'flex-start',
+        // flexDirection: 'column',
+        justifyContent: 'center',
         marginTop: '20px'
+    },
+    surveyBtn: {
+        width: '150px',
+        margin: '10px',
+        background: '#96E9C6',
+        transition: '0.6s',
+        '&:hover': {
+            transform: 'translateY(-5px)',
+            boxShdow: '0 5px 20px rgba(0,0,0,0.4)',
+            background: '#3f51b5',
+            color: 'white',
+            cursor: 'pointer',
+        }
     },
     input: {
         fontSize: '40px',

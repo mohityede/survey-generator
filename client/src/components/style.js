@@ -15,7 +15,7 @@ export default makeStyles((theme) => ({
         '&:hover': {
             transform: 'translateY(-5px)',
             boxShdow: '0 5px 20px rgba(0,0,0,0.4)',
-            background: 'linear-gradient(90deg,white,#3f51b5)',
+            // background: 'linear-gradient(90deg,white,#3f51b5)',
             cursor: 'pointer',
         }
     },
@@ -45,4 +45,16 @@ export default makeStyles((theme) => ({
     pos: {
         marginBottom: 12,
     },
+    saveBtn: {
+        background: '#96E9C6',
+        transition: '0.6s',
+        margin: '10px',
+        '&:hover': {
+            transform: 'translateY(-5px)',
+            boxShdow: '0 5px 20px rgba(0,0,0,0.4)',
+            background: '#3f51b5',
+            color: 'white',
+            cursor: 'pointer',
+        }
+    }
 }));
