@@ -27,7 +27,7 @@ function ShowSurvey() {
         }
         fetchSurvey();
 
-    }, {})
+    }, [])
 
     const handleGiveSurey = () => {
         setSurveyView("ques");

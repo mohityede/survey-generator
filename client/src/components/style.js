@@ -56,5 +56,17 @@ export default makeStyles((theme) => ({
             color: 'white',
             cursor: 'pointer',
         }
+    },
+    optionBox: {
+        width: '100%',
+        border: '1px solid black',
+        padding: '3px',
+        margin: '5px',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        background: '#3f51b5',
+        color: 'white',
+        borderRadius: '10px'
     }
 }));
