@@ -1,21 +1,29 @@
 import React, { useState } from 'react';
-import { FormGroup, Checkbox, Radio, TextField, Container, RadioGroup, FormControlLabel, Button } from '@material-ui/core';
+import { Radio, Container, RadioGroup, FormControlLabel, Button } from '@material-ui/core';
 import useStyles from './style';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { toast } from 'react-toastify';
+import axios from 'axios';
 
 export default function ShowQuestion({ ques }) {
     const [quesInd, setQuesInd] = useState(0);
     const [value, setValue] = useState(null);
     const classes = useStyles();
     const history = useHistory();
-    console.log(ques);
 
     const submitQues = () => {
         const obj = {
             questionId: ques[quesInd]._id,
             optionId: value
         }
-        console.log("submit obj", obj);
+        const fetchSurvey = async () => {
+            try {
+                await axios.patch(`http://localhost:7700/api/response`, obj);
+            } catch (err) {
+                toast.error("Something wrong!!")
+            }
+        }
+        fetchSurvey();
         if (quesInd === ques.length - 1) {
             history.push("/")
         }
@@ -39,6 +47,7 @@ export default function ShowQuestion({ ques }) {
                 >
                     { ques[quesInd].options.map(opt => (
                         <FormControlLabel
+                            key={ opt._id }
                             value={ opt._id }
                             control={ <Radio /> }
                             label={ opt.option }

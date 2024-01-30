@@ -10,13 +10,10 @@ import SurveyStat from '../../components/surveyStat';
 function ShowSurvey() {
     const classes = useStyles();
     const [survey, setSurvey] = useState({});
-    const [surveyView, setSurveyView] = useState("btn");// "stats" , "ques"
-    // @ts-ignore
+    const [surveyView, setSurveyView] = useState("btn");
     const { id: surveyId } = useParams();
 
     useEffect(() => {
-
-        console.log(surveyId);
         const fetchSurvey = async () => {
             try {
                 const result = await axios.get(`http://localhost:7700/api/${surveyId}/survey`);
@@ -73,31 +70,16 @@ function ShowSurvey() {
                 }
                 {
                     surveyView === "stats" &&
-                    <Container className={ classes.btnContainer }>
+                    <Container >
                         <SurveyStat questions={ survey.questions } />
                     </Container>
                 }
                 {
                     surveyView === "ques" &&
-                    <Container className={ classes.btnContainer }>
+                    <Container >
                         <ShowQuestion ques={ survey.questions } />
                     </Container>
                 }
-                {/* <form className={classes.formContainer} noValidate autoComplete="off">
-                    {survey.questions && survey.questions.map(ques => (
-                        <ShowQuestion ques={ques} />
-                    ))}
-                    <Button
-                        style={{ marginTop: '30px' }}
-                        variant="contained"
-                        color="secondary"
-                        size="small"
-                        disabled
-                    >
-                        sorry! you can't submit
-                                </Button>
-                </form> */}
-                {/* <Typography>if you want to submit survey.. you need to approve my work</Typography> */ }
             </Container >
         </>
     );
