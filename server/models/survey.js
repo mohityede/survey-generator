@@ -18,7 +18,6 @@ const SurveySchema = new mongoose.Schema(
             type: String,
         },
         questions: [{ type: Schema.Types.ObjectId, ref: 'Question' }],
-        users: [reqString]
     },
     { timestamps: true }
 );

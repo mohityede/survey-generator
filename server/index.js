@@ -5,18 +5,20 @@ import mongoose from "mongoose";
 import morgan from "morgan";
 import cors from 'cors';
 import bodyParser from 'body-parser';
-
+import dotenv from 'dotenv';
 import surveyRoute from "./routes/survey.js";
 
 // @ts-ignore
-mongoose.connect('mongodb://localhost:27017/serveydb',
+dotenv.config();
+
+mongoose.connect(process.env.MONGO_DB_URL,
     {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useCreateIndex: true,
         useFindAndModify: true
     })
-    .then(() => console.log("Connected to local MongoDB database successfully..."))
+    .then(() => console.log("Connected to MongoDB database successfully..."))
     .catch((err) => console.log("error to connect with Database :", err))
 
 // middlewares
@@ -27,7 +29,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use("/api", surveyRoute);
 
-const PORT = 7700;
+const PORT = process.env.PORT || 7700;
 
 app.listen(PORT, () => {
     console.log(`Backend server is running at port ${PORT}...`);
