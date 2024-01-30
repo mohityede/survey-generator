@@ -66,7 +66,7 @@ function QuestionDetails() {
 
                 const putSurvey = async () => {
                     console.log("body", ques);
-                    const result = await axios.post(`http://localhost:7700/api/${surveyId}/question`, ques);
+                    const result = await axios.post(`${process.env.REACT_APP_BASE_URL}/${surveyId}/question`, ques);
                     console.log(result);
                 }
 

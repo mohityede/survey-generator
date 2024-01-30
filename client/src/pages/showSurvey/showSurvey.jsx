@@ -16,7 +16,7 @@ function ShowSurvey() {
     useEffect(() => {
         const fetchSurvey = async () => {
             try {
-                const result = await axios.get(`http://localhost:7700/api/${surveyId}/survey`);
+                const result = await axios.get(`${process.env.REACT_APP_BASE_URL}/${surveyId}/survey`);
                 setSurvey(result.data);
             } catch (err) {
                 toast.error("Something wrong!!")

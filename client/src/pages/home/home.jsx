@@ -13,7 +13,7 @@ function Home() {
 
         const fetchSurveys = async () => {
             try {
-                const result = await axios.get("http://localhost:7700/api/survey/all");
+                const result = await axios.get(`${process.env.REACT_APP_BASE_URL}/survey/all`);
                 setSurveys(result.data);
             } catch (err) {
                 toast.error("Something wrong with connection!!")
@@ -25,13 +25,13 @@ function Home() {
 
     return (
         <>
-            <Typography className={classes.heading} >Existing Surveys</Typography>
-            <Container className={classes.Container}>
-                {(surveys.length === 0) && <Container className={classes.notice} >Nothing to Display! Create some survey.</Container>}
-                {surveys && surveys.map(survey => (
+            <Typography className={ classes.heading } >Existing Surveys</Typography>
+            <Container className={ classes.Container }>
+                { (surveys.length === 0) && <Container className={ classes.notice } >Nothing to Display! Create some survey.</Container> }
+                { surveys && surveys.map(survey => (
                     //@ts-ignore
-                    < SimpleCard key={survey._id} survey={survey} />
-                ))}
+                    < SimpleCard key={ survey._id } survey={ survey } />
+                )) }
             </Container>
         </>
     );

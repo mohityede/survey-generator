@@ -18,7 +18,7 @@ export default function ShowQuestion({ ques }) {
         }
         const fetchSurvey = async () => {
             try {
-                await axios.patch(`http://localhost:7700/api/response`, obj);
+                await axios.patch(`${process.env.REACT_APP_BASE_URL}/response`, obj);
             } catch (err) {
                 toast.error("Something wrong!!")
             }

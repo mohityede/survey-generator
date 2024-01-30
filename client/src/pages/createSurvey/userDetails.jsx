@@ -48,7 +48,7 @@ function UserDetails() {
             }
             const postSurvey = async () => {
                 try {
-                    const result = await axios.post("http://localhost:7700/api/create/survey", survey);
+                    const result = await axios.post(`${process.env.REACT_APP_BASE_URL}/create/survey`, survey);
                     history.replace(`/${result.data._id}/quetion`)
                 } catch (err) {
                     toast.error("Something wrong with connection!!")
@@ -63,32 +63,32 @@ function UserDetails() {
 
     return (
         <>
-            <Container className={classes.Container}>
-                <Typography variant="h4" className={classes.title}>
+            <Container className={ classes.Container }>
+                <Typography variant="h4" className={ classes.title }>
                     Create Survey
-                  </Typography>
-                <Typography className={classes.title}>
+                </Typography>
+                <Typography className={ classes.title }>
                     * are compulsory
-                  </Typography>
+                </Typography>
 
-                <form className={classes.formContainer} onSubmit={handleSubmit} validate autoComplete="off">
-                    <Container className={classes.input}>
-                        <TextField onChange={handleName} value={creatorName} required fullWidth label="Your Name" />
+                <form className={ classes.formContainer } onSubmit={ handleSubmit } validate autoComplete="off">
+                    <Container className={ classes.input }>
+                        <TextField onChange={ handleName } value={ creatorName } required fullWidth label="Your Name" />
                     </Container>
-                    <Container className={classes.input}>
-                        <TextField onChange={handleEmail} type='email' value={email} required fullWidth label="Email" />
+                    <Container className={ classes.input }>
+                        <TextField onChange={ handleEmail } type='email' value={ email } required fullWidth label="Email" />
                     </Container>
-                    <Container className={classes.input}>
-                        <TextField onChange={handleTitle} value={title} required fullWidth label="Survey Title" />
+                    <Container className={ classes.input }>
+                        <TextField onChange={ handleTitle } value={ title } required fullWidth label="Survey Title" />
                     </Container>
-                    <Container className={classes.input}>
-                        <TextField onChange={handleSubTitle} value={subTitle} fullWidth label="Survey Subtitle" />
+                    <Container className={ classes.input }>
+                        <TextField onChange={ handleSubTitle } value={ subTitle } fullWidth label="Survey Subtitle" />
                     </Container>
-                    <Container className={classes.input}>
-                        <TextField onChange={handleDescription} value={description} fullWidth label="Survey Description" />
+                    <Container className={ classes.input }>
+                        <TextField onChange={ handleDescription } value={ description } fullWidth label="Survey Description" />
                     </Container>
 
-                    <Container className={classes.input}>
+                    <Container className={ classes.input }>
                         <Button
                             type='submit'
                         >
