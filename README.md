@@ -1,11 +1,13 @@
 # survey-generator
-Web application to create survey.
+Web application to create survey. You can respond to survey and create if you want without any login credetials.
+## [Live App](https://survey-application-0zl5.onrender.com/)
 
 ## Project Details
 - In this application you can add your surveys globally.
 - This is MERN application
-- I build this application in WSL ( windows subsystem for linux ).
-
+- **Frontend:** ReactJS, MaterialUI, toast, axios, react-router-dom
+- **Backend:** ExpressJS, MongoDB, NodeJS
+ 
 ## How to Run this project in your system
 ### Requirement:
 - mongoDB
